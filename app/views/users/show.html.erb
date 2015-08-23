@@ -1,11 +1,42 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <h1>
-        <%= gravatar_for @user %>
-        <%= @user.name %>
-      </h1>
-    </section>
+
+<p id="edit" class="btn btn-sm btn-success w100"><%= link_to "edit" , edit_user_path(@user) %></p>
+
+<h4>
+                <table class="table table-striped">
+                    <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td><%= @user.name %></td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td><%= @user.adress %></td>
+                    </tr>
+                    <tr>
+                        <td>E-mail</td>
+                        <td><%= @user.email %></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+            </h4>
+            <h3>
+            <div class="row">
+                <div class="col-xs-6">
+                    <p><%= @user.following_users.count %><br><%= link_to "followings" , followings_path(@user) %></p>
+                </div>
+                <div class="col-xs-6">
+                    <p><%= @user.follower_users.count %><br><%= link_to "followers" , followers_path(@user) %></p>
+                </div>
+            </div>
+        </h3>
+            
+            </section>
+            
   </aside>
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
